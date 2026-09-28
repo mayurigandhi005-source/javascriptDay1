@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    
+    <h2 id="display">0</h2>
+
+    
+    <button onclick="calculation += '1'; updateDisplay();">1</button>
+    <button onclick="calculation += '2'; updateDisplay();">2</button>
+    <button onclick="calculation += '3'; updateDisplay();">3</button>
+    <button onclick="calculation += '4'; updateDisplay();">4</button>
+    <button onclick="calculation += '+'; updateDisplay();">+</button>
+    <button onclick="calculation += '-'; updateDisplay();">-</button>
+    <br><br>
+    <button onclick="calculation = eval(calculation); updateDisplay();">=</button>
+    <button onclick="calculation = ''; updateDisplay();">Clear</button>
+
+    <script>
+        let calculation = '';
+
+        function updateDisplay() {
+            document.getElementById('display').innerHTML = calculation || '0';
+        }
+    </script>
+
+</body>
+</html>
