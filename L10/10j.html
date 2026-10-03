@@ -1,74 +1,98 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DOM Projects</title>
-    <style>
-      body {
-        font-family: Arial;
-      }
-
-      .cost-input {
-        font-size: 15px;
-        padding: 10px;
-      }
-
-      .calculate-button {
-        background-color: green;
-        color: white;
-        border: none;
-        font-size: 15px;
-        padding: 12px 15px;
-        cursor: pointer;
-      }
-
-      .error-message {
-        color: red;
-      }
-    </style>
+    <link rel="stylesheet" href="10j.css">
   </head>
   <body>
-    <p>Amazon Shipping Calculator</p>
-    <input placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="
-      handleCostKeydown(event);
-    ">
-    <button onclick="
-      calculateTotal();
-    " class="calculate-button">Calculate</button>
-    <p class="js-total-cost"></p>
+   
+    <p class="js-calculation calculation"></p>
 
-    <p class="js-error-message error-message"></p>
+    <p>
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('1');
+      ">1</button>
 
-    <script>
-      function handleCostKeydown(event) {
-        if (event.key === 'Enter') {
-          calculateTotal();
-        }
-      }
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('2');
+      ">2</button>
 
-      function calculateTotal() {
-        const inputElement = document.querySelector('.js-cost-input');
-        let cost = Number(inputElement.value);
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('3');
+      ">3</button>
 
-        // First, reset all previous messages.
-        document.querySelector('.js-total-cost')
-          .innerHTML = '';
-        document.querySelector('.js-error-message')
-          .innerHTML = '';
+      <button class="calculator-button orange-button" onclick="
+        updateCalculation(' + ');
+      ">+</button>
+    </p>
 
-        if (cost < 0) {
-          document.querySelector('.js-error-message')
-            .innerHTML = 'Error: cost cannot be less than $0';
-          
-          return;
-        }
+    <p>
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('4');
+      ">4</button>
 
-        if (cost < 40) {
-          cost = cost + 10;
-        }
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('5');
+      ">5</button>
 
-        document.querySelector('.js-total-cost')
-          .innerHTML = `$${cost}`;
-      }
-    </script>
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('6');
+      ">6</button>
+
+      <button class="calculator-button orange-button" onclick="
+        updateCalculation(' - ');
+      ">-</button>
+    </p>
+
+    <p>
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('7');
+      ">7</button>
+
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('8');
+      ">8</button>
+
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('9');
+      ">9</button>
+
+      <button class="calculator-button orange-button" onclick="
+        updateCalculation(' * ');
+      ">*</button>
+    </p>
+
+    <p>
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('0');
+      ">0</button>
+
+      <button class="calculator-button gray-button" onclick="
+        updateCalculation('.');
+      ">.</button>
+
+      <button class="calculator-button gray-button" onclick="
+        calculation = eval(calculation);
+
+        displayCalculation();
+
+        localStorage.setItem('calculation', calculation);
+      ">=</button>
+
+      <button class="calculator-button orange-button" onclick="
+        updateCalculation(' / ');
+      ">/</button>
+    </p>
+
+    <p>
+      <button class="calculator-button gray-button clear-button" onclick="
+        calculation = '';
+
+        displayCalculation();
+
+        localStorage.setItem('calculation', calculation);
+      ">Clear</button>
+    </p>
+
+    <script src="10j.js"></script>
   </body>
 </html>
